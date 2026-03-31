@@ -1046,6 +1046,9 @@ ResourcePref resources[] = {
 
 static const Key keys[] = {
   /* modifier                     key            function                argument */
+
+  { Mod4Mask, XK_BackSpace, spawn, SHCMD("$HOME/DWMScr/powermenu.sh") },
+  { MODKEY, XK_space, spawn, SHCMD("j4-dmenu-desktop --dmenu='dmenu -i -fn \"Iosevka Nerd Font:size=16\" -nb \"#1e1e2e\" -nf \"#cdd6f4\" -sb \"#cba6f7\" -sf \"#1e1e2e\" -p \" Apps:\"'") },
   { MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
   /* volume */
   { 0, XF86XK_AudioRaiseVolume,  spawn, {.v = volup}   },
@@ -1259,8 +1262,8 @@ static const Key keys[] = {
     { MODKEY|Mod5Mask|Mod1Mask,     XK_Tab,        rotatelayoutaxis,       {.i = -4 } },   /* flextile, 4 = secondary stack axis */
     { MODKEY|ControlMask,           XK_Return,     mirrorlayout,           {0} },          /* flextile, flip master and stack areas */
 #endif // FLEXTILE_DELUXE_LAYOUT
-    { MODKEY,                       XK_space,      setlayout,              {0} },
-    { MODKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
+    { Mod4Mask,                       XK_space,      setlayout,              {0} },
+    { Mod4Mask|ShiftMask,             XK_space,      togglefloating,         {0} },
 #if ALWAYSONTOP_PATCH
     { MODKEY|ShiftMask,             XK_space,      togglealwaysontop,      {0} },
 #endif // ALWAYSONTOP_PATCH
