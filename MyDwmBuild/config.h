@@ -1048,6 +1048,7 @@ static const Key keys[] = {
   /* modifier                     key            function                argument */
 
   { Mod4Mask, XK_BackSpace, spawn, SHCMD("$HOME/DWMScr/powermenu.sh") },
+  { Mod4Mask, XK_u, spawn, SHCMD("$HOME/DWMScr/blocks.sh") },
   { MODKEY, XK_space, spawn, SHCMD("j4-dmenu-desktop --dmenu='dmenu -i -fn \"Iosevka Nerd Font:size=16\" -nb \"#1e1e2e\" -nf \"#cdd6f4\" -sb \"#cba6f7\" -sf \"#1e1e2e\" -p \" Apps:\"'") },
   { MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
   /* volume */
