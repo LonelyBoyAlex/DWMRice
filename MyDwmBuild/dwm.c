@@ -1946,7 +1946,7 @@ void
 drawbar(Monitor *m)
 {
 	Bar *bar;
-	
+
 	#if !BAR_FLEXWINTITLE_PATCH
 	if (m->showbar)
 	#endif // BAR_FLEXWINTITLE_PATCH
@@ -2768,7 +2768,8 @@ manage(Window w, XWindowAttributes *wa)
 	XMapWindow(dpy, c->win);
 	#endif // BAR_WINTITLEACTIONS_PATCH
 	#endif // SWALLOW_PATCH
-	focus(NULL);
+	//focus(NULL);
+	focus(c);
 
 	#if BAR_EWMHTAGS_PATCH
 	setfloatinghint(c);

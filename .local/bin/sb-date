@@ -1,6 +1,0 @@
-#!/bin/sh
-
-DATE="  $(date '+%a %d %b')"
-TIME="  $(date '+%I:%M %p')"
-
-echo "$DATE ^c#1e1e2e^^b#cba6f7^ $TIME ^d^"

@@ -36,7 +36,7 @@ logout_cmd() {
 }
 
 # ── Menu entries ──────────────────────────────────────────────────────────────
-ENTRIES="󰌾  Lock\n󰍃  Logout\n󰜉  Reboot\n󰐥  Poweroff"
+ENTRIES="󰐥  Poweroff\n󰌾  Lock\n󰜉  Reboot\n󰍃  Logout"
 # Plain text fallback (no Nerd Font icons):
 # ENTRIES="Lock\nLogout\nReboot\nPoweroff"
 
