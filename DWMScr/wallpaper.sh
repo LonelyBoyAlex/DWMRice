@@ -8,9 +8,14 @@ if [ ! -d "$WALLDIR" ]; then
 fi
 
 if [ "$1" = "choose" ]; then
-    chosen=$(ls "$WALLDIR" | dmenu -i -l 6 -fn "Iosevka Nerd Font:size=16" -nb "#1e1e2e" -nf "#cdd6f4" -sb "#cba6f7" -sf "#1e1e2e" -p " Wallpaper:")
+    #chosen=$(ls "$WALLDIR" | dmenu -i -l 6 -fn "Iosevka Nerd Font:size=16" -nb "#1e1e2e" -nf "#cdd6f4" -sb "#cba6f7" -sf "#1e1e2e" -p " Wallpaper:")
+    chosen=$(ls "$WALLDIR" | rofi -i -dmenu \
+      -config ~/DWMScr/config.rasi \
+      -p "  Wallpaper ")
     [ -z "$chosen" ] && exit 0
     feh --bg-fill "$WALLDIR/$chosen"
+    echo "$WALLDIR/$chosen" > ~/DWMScr/currentwall.txt
+    betterlockscreen -u $(cat ~/DWMScr/currentwall.txt) --fx blur
 else
     walls=("$WALLDIR"/*)
     count=${#walls[@]}
@@ -20,4 +25,6 @@ else
     fi
     random="${walls[RANDOM % count]}"
     feh --bg-fill "$random"
+    echo $random > ~/DWMScr/currentwall.txt
+    betterlockscreen -u $(cat ~/DWMScr/currentwall.txt) --fx blur
 fi

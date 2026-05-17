@@ -16,18 +16,23 @@ DMENU_LINES=0               # 0 = horizontal bar; set >0 for vertical list
 
 # ── Lock command ──────────────────────────────────────────────────────────────
 # Adjust to your locker of choice: i3lock, swaylock, slock, xscreensaver-command -lock …
-lock_cmd() {
-    if command -v loginctl &>/dev/null; then
-        loginctl lock-session
-    elif command -v i3lock &>/dev/null; then
-        i3lock -c 1e1e2e
-    elif command -v swaylock &>/dev/null; then
-        swaylock
-    elif command -v slock &>/dev/null; then
-        slock
-    else
-        notify-send "powermenu" "No lock program found." 2>/dev/null
-    fi
+# lock_cmd() {
+    #if command -v loginctl &>/dev/null; then
+        #loginctl lock-session
+    #elif command -v betterlockscreen &>/dev/null; then
+        #betterlockscreen -l -q
+    #elif command -v i3lock &>/dev/null; then
+        #i3lock -c 1e1e2e
+    #elif command -v swaylock &>/dev/null; then
+        #swaylock
+    #elif command -v slock &>/dev/null; then
+        #slock
+    #else
+        #notify-send "powermenu" "No lock program found." 2>/dev/null
+    #fi
+#}
+lock_cmd(){
+  betterlockscreen -l blur -q --blur 1.0
 }
 
 # ── Logout command ────────────────────────────────────────────────────────────

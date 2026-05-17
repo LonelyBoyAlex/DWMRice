@@ -188,7 +188,7 @@
 /* This patch underlines the selected tag, or optionally all tags.
  * https://dwm.suckless.org/patches/underlinetags/
  */
-#define BAR_UNDERLINETAGS_PATCH 1
+#define BAR_UNDERLINETAGS_PATCH 0
 
 /* This patch adds the window icon next to the window title in the bar.
  *
@@ -291,13 +291,13 @@
 /* This patch adds a border around the status bar(s) just like the border of client windows.
  * https://codemadness.org/paste/dwm-border-bar.patch
  */
-#define BAR_BORDER_PATCH 0
+#define BAR_BORDER_PATCH 1
 
 /* Optional addon for the border patch. This makes it so that the bar border is drawn using
  * the background colour of the bar as opposed to the border colour. This allows for the
  * border to have the same transparency as the background thus giving a more uniform look.
  */
-#define BAR_BORDER_COLBG_PATCH 0
+#define BAR_BORDER_COLBG_PATCH 1
 
 /* This patch centers the WM_NAME of the currently selected window on the status bar.
  * This is compatible with the wintitle, bartabgroups, flexwintitle and awesomebar bar
@@ -634,7 +634,7 @@
  * This patch will ignore color allocation failures and continue on as normal. The effect of
  * this is that the existing color, that was supposed to be replaced, will remain as-is.
  */
-#define DO_NOT_DIE_ON_COLOR_ALLOCATION_FAILURE_PATCH 0
+#define DO_NOT_DIE_ON_COLOR_ALLOCATION_FAILURE_PATCH 1
 
 /* Similarly to the dragmfact patch this allows you to click and drag clients to change the
  * cfact to adjust the client's size in the stack. This patch depends on the cfacts patch.
@@ -1307,7 +1307,7 @@
 /* This patch allows you to move all visible windows on a monitor to an adjacent monitor.
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-tagallmon-6.2.diff
  */
-#define TAGALLMON_PATCH 0
+#define TAGALLMON_PATCH 1
 
 /* This patch makes new clients attach into the stack area when you toggle a new tag into
  * view. This means your master area will remain unchanged when toggling views.
@@ -1331,19 +1331,19 @@
  * while remaining in fullscreen.
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-tagmonfixfs-6.2.diff
  */
-#define TAGMONFIXFS_PATCH 0
+#define TAGMONFIXFS_PATCH 1
 
 /* Add functions and keybindings to tag a window to a desired tag on the next (right)
  * or previous (left) monitor from the currently selected monitor.
  * https://dwm.suckless.org/patches/tagothermonitor/
  */
-#define TAGOTHERMONITOR_PATCH 0
+#define TAGOTHERMONITOR_PATCH 1
 
 /* This patch allows you to swap all visible windows on one monitor with those of an
  * adjacent monitor.
  * https://github.com/bakkeby/patches/blob/master/dwm/dwm-tagswapmon-6.2.diff
  */
-#define TAGSWAPMON_PATCH 0
+#define TAGSWAPMON_PATCH 1
 
 /* Sync tag actions across all monitors.
  * This is comparable to a sort of pseudo-desktop environment.
@@ -1450,8 +1450,10 @@
 /* This patch warps the mouse cursor to the center of the currently focused window or screen
  * when the mouse cursor is (a) on a different screen or (b) on top of a different window.
  * https://dwm.suckless.org/patches/warp/
+ *
+ * this is what CLAUDE TOLD ME
  */
-#define WARP_PATCH 0
+#define WARP_PATCH 1
 
 /* Sometimes a single application opens different windows depending on the task
  * at hand and this is often reflected in the WM_WINDOW_ROLE(STRING) x property.
@@ -1479,7 +1481,7 @@
  * the float border color, awesomebar, urgentborder and titlecolor patches.
  * https://dwm.suckless.org/patches/xrdb/
  */
-#define XRDB_PATCH 0
+#define XRDB_PATCH 1
 
 /* This patch allows for integer, float and string settings to be loaded from Xresources.
  * Xresources takes precedence over xrdb.

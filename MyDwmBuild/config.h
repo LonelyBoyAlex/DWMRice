@@ -26,7 +26,7 @@ static const unsigned int borderpx       = 3;   /* border pixel of windows */
 /* This allows the bar border size to be explicitly set separately from borderpx.
  * If left as 0 then it will default to the borderpx value of the monitor and will
  * automatically update with setborderpx. */
-static const unsigned int barborderpx    = 0;  /* border pixel of bar */
+static const unsigned int barborderpx    = 3;  /* border pixel of bar */
 #endif // BAR_BORDER_PATCH
 static const unsigned int snap           = 32;  /* snap pixel */
 #if SWALLOW_PATCH
@@ -41,9 +41,9 @@ static int nomodbuttons                  = 1;   /* allow client mouse button bin
 #if VANITYGAPS_PATCH
 static const unsigned int gappih         = 10;  /* horiz inner gap between windows */
 static const unsigned int gappiv         = 10;  /* vert inner gap between windows */
-static const unsigned int gappoh         = 10;  /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov         = 10;  /* vert outer gap between windows and screen edge */
-static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const unsigned int gappoh         = 15;  /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov         = 15;  /* vert outer gap between windows and screen edge */
+static const int smartgaps_fact          = 1.5;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
 static const char autostartblocksh[]     = "autostart_blocking.sh";
@@ -154,7 +154,8 @@ static const unsigned int maxhtab          = 200;  /* tab menu height */
 #endif // ALT_TAB_PATCH
 
 /* Indicators: see patch/bar_indicators.h for options */
-static int tagindicatortype              = INDICATOR_BOTTOM_BAR;
+//static int tagindicatortype              = INDICATOR_BOTTOM_BAR;
+static int tagindicatortype              = INDICATOR_BOTTOM_BAR_SLIM;
 //static int tagindicatortype              = INDICATOR_TOP_LEFT_SQUARE;
 static int tiledindicatortype            = INDICATOR_NONE;
 static int floatindicatortype            = INDICATOR_TOP_LEFT_SQUARE;
@@ -181,9 +182,9 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "Iosevka Nerd Font:size=14" };
+static const char *fonts[]               = { "Iosevka Nerd Font:size=13" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "Iosevka Nerd Font:size=16";
+static const char dmenufont[]            = "Iosevka Nerd Font:size=15";
 
 static char c000000[]                    = "#000000"; // placeholder value
 static char normfgcolor[]                = "#cdd6f4"; // Mocha - Text
@@ -913,7 +914,13 @@ static const char *dmenucmd[] = {
   NULL
 };
 static const char *term2cmd[]  = { "st", NULL };
-static const char *roficmd[]  = { "rofi -show drun", NULL };
+//static const char *roficmd[]  = { "rofi -show drun -config ~/DWMScr/config.rasi", NULL };
+static const char *roficmd[] = {
+    "rofi",
+    "-show", "drun",
+    "-config", "~/DWMScr/config.rasi",
+    NULL
+};
 static const char *firefoxcmd[] = { "firefox", NULL };
 
 #if BAR_STATUSCMD_PATCH
@@ -1051,10 +1058,16 @@ static const Key keys[] = {
 
   { MODKEY, XK_e, spawn, SHCMD("nautilus") },
   { SUPKEY, XK_BackSpace, spawn, SHCMD("$HOME/DWMScr/powermenu.sh") },
+  { SUPKEY|ShiftMask, XK_s, spawn, SHCMD("$HOME/DWMScr/screenshot.sh") },
+  { MODKEY|ControlMask, XK_s, spawn, SHCMD("$HOME/DWMScr/screenshot.sh") },
   { MODKEY|ControlMask, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaper.sh choose") },
+  { SUPKEY, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaper.sh") },
+  { SUPKEY, XK_l, spawn, SHCMD("betterlockscreen -l blur -q") },
+  { SUPKEY|ShiftMask, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaperd.sh choose") },
   { SUPKEY, XK_u, spawn, SHCMD("$HOME/DWMScr/blocks.sh") },
-  { MODKEY, XK_space, spawn, SHCMD("j4-dmenu-desktop --dmenu='dmenu -i -fn \"Iosevka Nerd Font:size=16\" -nb \"#1e1e2e\" -nf \"#cdd6f4\" -sb \"#cba6f7\" -sf \"#1e1e2e\" -p \" Apps:\"'") },
+  { MODKEY, XK_space, spawn, SHCMD("j4-dmenu-desktop --dmenu='dmenu -i -fn \"Iosevka Nerd Font:size=15\" -nb \"#1e1e2e\" -nf \"#cdd6f4\" -sb \"#cba6f7\" -sf \"#1e1e2e\" -p \" Apps:\"'") },
   { MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
+  { ControlMask, XK_space, spawn, {.v = roficmd } },
   /* volume */
   { 0, XF86XK_AudioRaiseVolume,  spawn, {.v = volup}   },
   { 0, XF86XK_AudioLowerVolume,  spawn, {.v = voldown} },
@@ -1063,6 +1076,8 @@ static const Key keys[] = {
   /* backlight */
   { 0, XF86XK_MonBrightnessUp,   spawn, {.v = blup}    },
   { 0, XF86XK_MonBrightnessDown, spawn, {.v = bldown}  },
+  { SUPKEY, XK_bracketright,   spawn, {.v = blup}    },
+  { SUPKEY, XK_bracketleft, spawn, {.v = bldown}  },
 
   /* media */
   { 0, XF86XK_AudioPlay,         spawn, {.v = playpause} },
@@ -1269,7 +1284,7 @@ static const Key keys[] = {
     { MODKEY|ControlMask,           XK_Return,     mirrorlayout,           {0} },          /* flextile, flip master and stack areas */
 #endif // FLEXTILE_DELUXE_LAYOUT
     { SUPKEY,                       XK_space,      setlayout,              {0} },
-    { SUPKEY|ShiftMask,             XK_space,      togglefloating,         {0} },
+    { SUPKEY,             XK_a,      togglefloating,         {0} },
 #if ALWAYSONTOP_PATCH
     { MODKEY|ShiftMask,             XK_space,      togglealwaysontop,      {0} },
 #endif // ALWAYSONTOP_PATCH
