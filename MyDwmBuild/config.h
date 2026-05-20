@@ -815,8 +815,8 @@ static const char *xkb_layouts[]  = {
 #endif // XKB_PATCH
 
 /* key definitions */
-#define MODKEY Mod1Mask
-#define SUPKEY Mod4Mask
+#define MODKEY Mod4Mask
+#define SUPKEY Mod1Mask
 #if COMBO_PATCH && SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
 #define TAGKEYS(KEY,TAG) \
 { MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
@@ -1057,15 +1057,15 @@ static const Key keys[] = {
   /* modifier                     key            function                argument */
 
   { MODKEY, XK_e, spawn, SHCMD("nautilus") },
-  { SUPKEY, XK_BackSpace, spawn, SHCMD("$HOME/DWMScr/powermenu.sh") },
-  { SUPKEY|ShiftMask, XK_s, spawn, SHCMD("$HOME/DWMScr/screenshot.sh") },
-  { MODKEY|ControlMask, XK_s, spawn, SHCMD("$HOME/DWMScr/screenshot.sh") },
-  { MODKEY|ControlMask, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaper.sh choose") },
-  { SUPKEY, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaper.sh") },
-  { SUPKEY, XK_l, spawn, SHCMD("betterlockscreen -l blur -q") },
-  { SUPKEY|ShiftMask, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaperd.sh choose") },
+  { MODKEY, XK_BackSpace, spawn, SHCMD("$HOME/DWMScr/powermenu.sh") },
+  { MODKEY|ShiftMask, XK_s, spawn, SHCMD("$HOME/DWMScr/screenshot.sh") },
+  { SUPKEY|ControlMask, XK_s, spawn, SHCMD("$HOME/DWMScr/screenshot.sh") },
+  { SUPKEY|ControlMask, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaper.sh choose") },
+  { MODKEY, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaper.sh") },
+  { MODKEY, XK_l, spawn, SHCMD("betterlockscreen -l blur -q") },
+  { MODKEY|ShiftMask, XK_w, spawn, SHCMD("$HOME/DWMScr/wallpaperd.sh choose") },
   { SUPKEY, XK_u, spawn, SHCMD("$HOME/DWMScr/blocks.sh") },
-  { MODKEY, XK_space, spawn, SHCMD("j4-dmenu-desktop --dmenu='dmenu -i -fn \"Iosevka Nerd Font:size=15\" -nb \"#1e1e2e\" -nf \"#cdd6f4\" -sb \"#cba6f7\" -sf \"#1e1e2e\" -p \" Apps:\"'") },
+  { SUPKEY, XK_space, spawn, SHCMD("j4-dmenu-desktop --dmenu='dmenu -i -fn \"Iosevka Nerd Font:size=15\" -nb \"#1e1e2e\" -nf \"#cdd6f4\" -sb \"#cba6f7\" -sf \"#1e1e2e\" -p \" Apps:\"'") },
   { MODKEY,                       XK_b,      spawn,          {.v = firefoxcmd } },
   { ControlMask, XK_space, spawn, {.v = roficmd } },
   /* volume */
@@ -1283,7 +1283,7 @@ static const Key keys[] = {
     { MODKEY|Mod5Mask|Mod1Mask,     XK_Tab,        rotatelayoutaxis,       {.i = -4 } },   /* flextile, 4 = secondary stack axis */
     { MODKEY|ControlMask,           XK_Return,     mirrorlayout,           {0} },          /* flextile, flip master and stack areas */
 #endif // FLEXTILE_DELUXE_LAYOUT
-    { SUPKEY,                       XK_space,      setlayout,              {0} },
+    { MODKEY,                       XK_space,      setlayout,              {0} },
     { SUPKEY,             XK_a,      togglefloating,         {0} },
 #if ALWAYSONTOP_PATCH
     { MODKEY|ShiftMask,             XK_space,      togglealwaysontop,      {0} },
