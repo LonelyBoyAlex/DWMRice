@@ -1,4 +1,6 @@
+@import "~/.cache/hellwal/rofi.rasi"
 * {
+ /*
     active-background: #3d3e57;
     active-foreground: @foreground;
     normal-background: transparent;
@@ -19,17 +21,14 @@
     selected-normal-foreground: @foreground;
     selected-urgent-background: #8D8d8d;
     selected-urgent-foreground: @foreground;
-
-    background-color: transparent;
-    background: transparent;
-    foreground: #ffffff;
-    border-color: @background;
-    spacing: 8px;
-
     bgcol: #3d3e57;
     borcol: #fad7ff;
-    font: "Iosevka Nerd Font Mono 13";
+
+*/
+
+    font: "Iosevka Nerd Font Propo 13";
 }
+
 
 #window {
     background-color: transparent;
@@ -73,6 +72,8 @@
     padding: 10px 10px 10px 0px;
     text-color: #1e1e2e;
     background-color: #e8c2ff;
+    text-color: @selected-active-background;
+    background-color:@selected-normal-background;
 }
 
 #listview {
@@ -88,6 +89,7 @@
 
 #element {
     background:transparent;
+    background-color: transparent;
     padding: 8px 4px 8px 32px;
     font-size:16px;
     border-radius:12px;
@@ -102,9 +104,10 @@
 }
 
 #element.normal.normal {
-    /*background-color: @normal-background;*/
-    background:transparent;
+    /*background-color: @normal-background;
     text-color: #ccd5f3;
+    */
+    background:transparent;
 }
 
 #element.normal.urgent {
@@ -118,11 +121,13 @@
 }
 
 #element.selected.normal {
-    background-color: #e6c1ff; //picker here
+    /*background-color: #e6c1ff; //picker here
     text-color: #1e1e2d;
+    border-color:#f3cfff;*/
+    text-color: @selected-active-background;
+    background-color:@selected-normal-background;
     border:none;
     border-radius:12px;
-    border-color:#f3cfff;
 }
 
 #element.selected.urgent {
@@ -137,7 +142,6 @@
 
 #element.alternate.normal {
     background-color: @alternate-normal-background;
-    text-color: #ccd5f3;
 }
 
 #element.alternate.urgent {
@@ -179,13 +183,17 @@
 
 #case-indicator {
     spacing: 0;
-    text-color: @normal-foreground;
+    text-color: @selected-active-background;
+    background-color:@selected-normal-background;
     padding: 10px 4px;
+    border-radius:0px 12px 12px 0px;
 }
 
 #entry {
     spacing: 0;
     text-color: @normal-foreground;
+    text-color: @selected-active-background;
+    background-color:@selected-normal-background;
     padding: 10px 0px 10px 50px;
 }
 
@@ -194,4 +202,6 @@
     padding: 10px 10px;
     text-color: #1e1e2e;
     background-color: #e8c2ff;
+    text-color: @selected-active-background;
+    background-color:@selected-normal-background;
 }

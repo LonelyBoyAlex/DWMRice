@@ -1,0 +1,32 @@
+* {
+    active-background: #%% color2.hex %%;
+    active-foreground: #%% foreground.hex %%;
+    normal-background: transparent;
+    normal-foreground: #%% foreground.hex %%;
+    urgent-background: #%% color1.hex %%;
+    urgent-foreground: #%% foreground.hex %%;
+
+    alternate-active-background: #%% background.hex %%;
+    alternate-active-foreground: #%% foreground.hex %%;
+    alternate-normal-background: transparent;
+    alternate-normal-foreground: #%% foreground.hex %%;
+    alternate-urgent-background: #%% background.hex %%;
+    alternate-urgent-foreground: #%% foreground.hex %%;
+
+    selected-active-background: #%% color1.hex %%;
+    selected-active-foreground: #%% foreground.hex %%;
+    selected-normal-background: #%% color6.hex %%;
+    selected-normal-foreground: #%% foreground.hex %%;
+    selected-urgent-background: #%% color3.hex %%;
+    selected-urgent-foreground: #%% foreground.hex %%;
+
+    background-color: transparent;
+    background: transparent;
+    foreground: #ffffff;
+    border-color: @background;
+    spacing: 8px;
+
+    bgcol: transparent;
+    borcol: @selected-active-foreground;
+}
+

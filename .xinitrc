@@ -58,10 +58,18 @@ fi
 export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-$HOME/DWMScr/wallpaper.sh &
-picom --config ~/.config/picom/redcomF2.conf &
+#$HOME/DWMScr/wallpaper.sh &
+#picom --config ~/.config/picom/redcomF2.conf &
+picom --config ~/.config/picom/bread.conf &
 udiskie --tray &
 blueman-applet &
 dwmblocks &
-
+dunst &
+# Restore wallpaper and colors on login
+if [ -f "$HOME/DWMScr/currentwall.txt" ]; then
+    wall=$(cat "$HOME/DWMScr/currentwall.txt" | tr -d '[:space:]')
+    feh --bg-fill "$wall"
+    hellwal -i "$wall"
+    xrdb -merge "$HOME/.cache/hellwal/colors.Xresources"
+fi
 exec dwm

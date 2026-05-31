@@ -1,6 +1,7 @@
 #!/bin/bash
 
-choice=$(printf "Fullscreen\nRegion\nWindow\nFullscreen (5s delay)\nRegion (copy to clipboard)" | dmenu -i -fn "Iosevka Nerd Font:size=16" -nb "#1e1e2e" -nf "#cdd6f4" -sb "#cba6f7" -sf "#1e1e2e" -p "󰄀 Screenshot:")
+#choice=$(printf "Fullscreen\nRegion\nWindow\nFullscreen (5s delay)\nRegion (copy to clipboard)" | dmenu -i -fn "Iosevka Nerd Font:size=16" -nb "#1e1e2e" -nf "#cdd6f4" -sb "#cba6f7" -sf "#1e1e2e" -p "󰄀 Screenshot:")
+choice=$(printf "Fullscreen\nRegion\nWindow\nFullscreen (5s delay)\nRegion (copy to clipboard)" | dmenu -p "󰄀 Screenshot:")
 
 SAVEDIR="$HOME/Pictures/screenshots"
 mkdir -p "$SAVEDIR"
